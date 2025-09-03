@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Hero
 from django.views.generic import ListView
-from .forms import ContatoForm
+from .forms import ContatoForm, HeroForm
 # Create your views here.
 
 def hello_heroes(request):
@@ -32,3 +32,14 @@ def contato_view(request):
             return render(request, "heroes/contato_sucesso.html")
 
     return render(request, "heroes/contato.html", {"form": form})
+
+def criar_heroi(request):
+    if request.method == "POST":
+        form = HeroForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_herois')
+    else:
+        form = HeroForm()
+
+    return render(request, "heroes/form_heroi.html", {"form": form})

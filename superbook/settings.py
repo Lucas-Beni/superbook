@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     # apps
     'heroes',
     'posts',
+
+    "widget_tweaks",
 ]
 
 MIDDLEWARE = [
