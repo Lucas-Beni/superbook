@@ -43,8 +43,6 @@ INSTALLED_APPS = [
     'posts',
     'villains',
     'comments',
-
-    "widget_tweaks",
 ]
 
 MIDDLEWARE = [

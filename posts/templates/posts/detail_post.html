@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container mt-4">
+    <h2>Detalhes do Post</h2>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <strong>{{ post.autor.codinome }}</strong><br>
+        {{ post.mensagem|linebreaksbr }}
+      </li>
+    </ul>
+
+    <br>
+
+    <form method="POST" class="card p-3">
+      {% csrf_token %}
+      {% for field in form %}
+          <div class="mb-3">
+
+          {{ field.label_tag }}
+
+          {{ field }}
+
+          {% if field.errors %}
+              <div class="text-danger">
+              {% for error in field.errors %}
+                  <small>{{ error }}</small>
+              {% endfor %}
+              </div>
+          {% endif %}
+          </div>
+      {% endfor %}
+      <button type="submit" class="btn btn-success">Comentar</button>
+    </form>
+
+    <br>
+
+    <h3>Comentários</h3>
+    <ul class="list-group">
+      {% for comentario in comentarios %}
+        <li class="list-group-item">
+          <strong>{{ comentario.autor }}</strong> 
+          <small class="text-muted">{{ comentario.criado_em|date:"d/m/Y H:i" }}</small>
+          <br>
+          {{ comentario.conteudo|linebreaksbr }}
+          <br>
+        </li>
+      {% empty %}
+        Nenhum comentário ainda.
+      {% endfor %}
+
+    </ul>
+  </div>
+{% endblock %}
