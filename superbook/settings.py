@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'heroes',
     'posts',
     'villains',
+    'comments',
 
     "widget_tweaks",
 ]

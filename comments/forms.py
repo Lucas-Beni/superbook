@@ -1,10 +1,10 @@
 from django import forms
-from .models import Post
+from .models import Comentario
 
-class PostForm(forms.ModelForm):
+class CommentForm(forms.ModelForm):
     class Meta:
-        model = Post
-        fields = ['autor', 'mensagem']
+        model = Comentario
+        fields = ["autor", "conteudo"]
         widgets = {
             'autor': forms.Select(attrs={'class': 'form-control'})
         }
