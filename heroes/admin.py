@@ -12,10 +12,11 @@ class HeroAdmin(admin.ModelAdmin):
             'fields': ('codinome', 'nome_real')
         }),
         ('Informações Gerais', {
-            'fields': ('email_hero', 'poder_principal', 'cidade', 'historia')
+            'fields': ('email_hero', 'poder_principal', 'cidade', 'historia', 'imagem')
         }),
         ('Dados de Registro', {
-            'fields': ('criado_em',)
+            'fields': ('criado_em',),
+            'classes': ('collapse',),
         }),
     )
     readonly_fields = ['criado_em']

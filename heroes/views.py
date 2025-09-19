@@ -35,7 +35,7 @@ def contato_view(request):
 
 def criar_heroi(request):
     if request.method == "POST":
-        form = HeroForm(request.POST)
+        form = HeroForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('lista_herois')
